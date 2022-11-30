@@ -93,4 +93,4 @@ def open_connection():
 
 
 if __name__ == '__main__':
-   websocket.run(http_server, debug=True, host="0.0.0.0", port=8080)
+   websocket.run(http_server, host="0.0.0.0", port=8080)
