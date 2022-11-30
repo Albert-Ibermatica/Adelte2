@@ -7,6 +7,7 @@ import run_ec2_instances
 import return_and_serialize
 import img_capture
 import upload_real_photo
+import requests
 # configuracion del servidor
 http_server = Flask(__name__ , static_folder="static", template_folder="templates")
 Payload.max_decode_packets = 500
