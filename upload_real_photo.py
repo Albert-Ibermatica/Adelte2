@@ -49,6 +49,7 @@ def upload(image_file):
         jsonResponse = r.json()
 
         imagenResul = base64.b64decode(jsonResponse['imageBytes'].encode('ascii'))
+        print(imagenResul)
         image = Image.open(io.BytesIO(imagenResul))
         image.save('{}/{}_segmented.jpeg'.format(savePath, basename))
 

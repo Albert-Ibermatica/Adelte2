@@ -1,12 +1,12 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_socketio import SocketIO, emit
 from engineio.payload import Payload
-import requests
 import base64
 import stop_ec2_instances
 import run_ec2_instances
 import return_and_serialize
 import img_capture
+import upload_real_photo
 # configuracion del servidor
 http_server = Flask(__name__ , static_folder="static", template_folder="templates")
 Payload.max_decode_packets = 500
@@ -22,6 +22,26 @@ def livestreaming():
 @http_server.route('/img_processing')
 def imgprocessing():
    return render_template('img_processing.html')
+
+@http_server.route('/process_real_img', methods=['POST'])
+# este metodo es un post que procesa una imagen real y la envia al servidor de AWS con el modelo de deep learning.
+def process_real_img():
+    print('metodo process real img.')
+    # cogemos los datos del form
+    
+    #json = request.get_json()
+    img = request.form['img']
+    # base64 a imagen real.
+    
+    with open("unprocessed_real_imgs/realimg.jpeg", "wb") as fh:
+        fh.write(base64.b64decode(img))
+
+    upload_real_photo.upload("unprocessed_real_imgs/realimg.jpeg")
+
+    serialized_real_img = return_and_serialize.capture_and_serialize_real()
+    
+    return serialized_real_img
+
 
 #metodos del websocket
 
