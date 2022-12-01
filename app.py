@@ -37,9 +37,9 @@ def process_real_img():
     with open("unprocessed_real_imgs/realimg.jpeg", "wb") as fh:
         fh.write(base64.b64decode(img))
 
-    upload_real_photo.upload("unprocessed_real_imgs/realimg.jpeg")
+    serialized_real_img = upload_real_photo.upload("unprocessed_real_imgs/realimg.jpeg")
 
-    serialized_real_img = return_and_serialize.capture_and_serialize_real()
+    #serialized_real_img = return_and_serialize.capture_and_serialize_real()
     
     return serialized_real_img
 
