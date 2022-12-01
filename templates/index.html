@@ -163,25 +163,22 @@
     }
     socket.on('liveResponse',({img,frame}) => {
        var enc = new TextDecoder("utf-8");
-       
        // el ret es un json con el fotograma y la imagen procesada.
        //console.log("------------ESTO ES LA VARIABLE RET ::")
        //console.log(ret)
-       
-       console.log("ret.img")
-       console.log(img)
-       console.log("ret.frame")
-       console.log(frame)
-       var base64img = enc.decode(img)
-       console.log(base64img)
+       //console.log("ret.img")
+       //console.log(img)
+       //console.log("ret.frame")
+       //console.log(frame)
+       //console.log(base64img)
        //console.log('data:image/jpeg;base64,'+base64img)
-       document.getElementById('imgdisplay').src='data:image/jpeg;base64,'+base64img
-       base64img = enc.decode(frame)
-       document.getElementById('framedisplay').src='data:image/jpeg;base64,'+base64img
-       socket.emit('openConnection')
-       
-       
 
+       document.getElementById('imgdisplay').src='data:image/jpeg;base64,'+img
+
+       var base64frame = enc.decode(frame)
+       document.getElementById('framedisplay').src='data:image/jpeg;base64,'+base64frame
+
+       socket.emit('openConnection')
     })
     function closeConnection() {
         window.alert('Deteniendo procesamiento de imagen')

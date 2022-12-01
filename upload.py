@@ -40,9 +40,9 @@ def upload(image_file):
         r = requests.post(url, files=my_img, data=data)
         req_made = time.time()
         # Recive request answer:
-        jsonResponse = r.json()
-        imagenBase64 = base64.b64encode (jsonResponse['imageBytes'].encode('ascii'))
-        imagenResul = base64.b64decode(jsonResponse['imageBytes'].encode('ascii'))
+        imagenBase64 = r.json()['imageBytes']
+        #imagenBase64 = base64.b64encode (jsonResponse['imageBytes'].encode('ascii'))
+        #imagenResul = base64.b64decode(jsonResponse['imageBytes'].encode('ascii'))
         #image = Image.open(io.BytesIO(imagenResul))
         #image.save('{}/{}_segmented.jpeg'.format(savePath, basename))
 
