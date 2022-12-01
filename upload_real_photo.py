@@ -47,17 +47,17 @@ def upload(image_file):
         req_made = time.time()
         # Recive request answer:
         jsonResponse = r.json()
-
-        imagenResul = base64.b64decode(jsonResponse['imageBytes'].encode('ascii'))
-        print(imagenResul)
-        image = Image.open(io.BytesIO(imagenResul))
-        image.save('{}/{}_segmented.jpeg'.format(savePath, basename))
+        imagenBase64=jsonResponse['imageBytes']
+        #imagenResul = base64.b64decode(jsonResponse['imageBytes'].encode('ascii'))
+        #print(imagenResul)
+        #image = Image.open(io.BytesIO(imagenResul))
+        #image.save('{}/{}_segmented.jpeg'.format(savePath, basename))
 
         saved = time.time()
 
         print("time for image {}: ".format(image_file), saved - start)
 
-        return True
+        return imagenBase64
 
     except Exception as e:
 
