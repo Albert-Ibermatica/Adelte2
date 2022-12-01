@@ -12,7 +12,8 @@ def captura_imagen():
         file = open("unprocessed_imgs/captura_camara.jpeg", "wb")
         file.write(r.content)
         file.close()
-        upload.upload('unprocessed_imgs/captura_camara.jpeg')
+        
+        return upload.upload('unprocessed_imgs/captura_camara.jpeg') 
     except Exception as e:
         print("error en la captura")
     return r

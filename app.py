@@ -8,6 +8,7 @@ import return_and_serialize
 import img_capture
 import upload_real_photo
 import requests
+import upload
 # configuracion del servidor
 http_server = Flask(__name__ , static_folder="static", template_folder="templates")
 Payload.max_decode_packets = 500
@@ -94,16 +95,19 @@ def open_connection():
 
     # captura y graba una imagen en el directorio:  unprocessed_imgs/captura_camara.jpeg 
     # llama al metodo upload y guarda lo que devuelve a /processed_imgs
-
-    img_capture.captura_imagen()
-    # cogemos un fotograma para mandar a la web el de la izquierda 
     r = requests.get('http://192.168.100.71:6688/snapshot/PROFILE_000')
-
+    file = open("unprocessed_imgs/captura_camara.jpeg", "wb")
+    file.write(r.content)
+    file.close()
+    
+    base64_img= upload.upload('unprocessed_imgs/captura_camara.jpeg') 
+    # cogemos un fotograma para mandar a la web el de la izquierda 
+    
     # serializamos a base64 el fotograma para mandarlo en el emit del websocket
     frame_base64 = base64.b64encode(r.content)
 
     # capturamos la ultima imagen del directorio y la serializamos
-    base64_img = return_and_serialize.capture_and_serialize()
+    #base64_img = return_and_serialize.capture_and_serialize()
     
     # emitimos las 2 imagenes
     websocket.emit('liveResponse', {'img': base64_img, 'frame': frame_base64})
