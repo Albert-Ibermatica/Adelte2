@@ -35,7 +35,7 @@
 <script>
     // conectamos con el websocket tambien
     const socket = io('http://127.0.0.1:8080');
-    
+    const delay = ms => new Promise(res => setTimeout(res, ms));
     socket.connect();
     socket.emit('aws_status')
     socket.on('aws_status_response', function (ret){
@@ -58,6 +58,23 @@
         }
         // running
         if(ret == 'running'){
+            var esperar = (function() {
+            var executed = false;
+            return function() {
+                 if (!executed) {
+                     executed = true;
+                     const cargandoModelo = async () => {
+                        await delay(40000);
+                        var elem = document.getElementById('servidorActivo')
+                        elem.innerText = "Servidor AWS: Cargando modelo TF ..."
+                        elem.style.color ="blue"
+
+                            };
+                        }
+                    };
+                })();
+
+                esperar();
                      var elem = document.getElementById('servidorActivo')
                      elem.innerText = "Servidor AWS: Activo"
                      elem.style.color ="green"
