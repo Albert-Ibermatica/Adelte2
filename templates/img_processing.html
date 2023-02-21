@@ -86,9 +86,16 @@
         }
         // running
         if(ret == 'running'){
-               var elem = document.getElementById('servidorActivo')
-               elem.innerText = "Servidor AWS: Activo"
-               elem.style.color ="green"
+                     var elem = document.getElementById('servidorActivo')
+                     elem.innerText = "Servidor AWS: Cargando modelo TF ..."
+                     elem.style.color ="blue"
+                const yourFunction = async () => {
+                     await delay(40000);
+                     var elem = document.getElementById('servidorActivo')
+                     elem.innerText = "Servidor AWS: Activo"
+                     elem.style.color ="green"
+                };
+              
         }
         
         // pending
