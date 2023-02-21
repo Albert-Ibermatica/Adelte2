@@ -62,6 +62,8 @@
 <script>
     // conectamos con el websocket tambien
     const socket = io('http://127.0.0.1:8080');
+    const delay = ms => new Promise(res => setTimeout(res, ms));
+
     socket.connect();
     
     socket.emit('aws_status')
