@@ -8,5 +8,4 @@ function start_instances(){
     socket.connect()
     console.log("start_instances clicked")
     socket.emit('run_aws')
-    cargandoModelo();
 }
