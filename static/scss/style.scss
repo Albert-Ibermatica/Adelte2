@@ -1,0 +1,73 @@
+:root {
+    --c-black: #333;
+    --c-white: #fff;
+    --c-primary: #3479dd;
+    --c-secondary-1: #d3c4ed;
+    --c-secondary-2: #fcf5e5;
+
+    --c-tertiary-digital-1: #EA2BCF;
+    --c-tertiary-digital-2: #0DDDBC;
+    --c-tertiary-digital-3: #FFA489;
+
+
+    --c-tertiary-1: #332687;
+    --c-tertiary-2: #7B309B;
+    --c-tertiary-3: #009C82;
+    --c-tertiary-4: #FFD400;
+    --c-tertiary-5: #8AC9ED;
+    --c-tertiary-6: #DC4588;
+    --c-tertiary-7: #71DDBC;
+    --c-tertiary-8: #FFA489;
+    --c-accent: brown;
+
+    font-family: 'IBM Plex Sans', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 1em;
+    
+    --space: 1rem;
+    --space-2: 2rem;
+    --shadow: rgba(0, 0, 0, 0.8) 0px 5px 30px;
+    --shadow-header: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    --shadow-footer: rgba(0,0,0, .6);
+    --shadow-nav: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+}
+
+@mixin deg-corp-header {
+    background: rgb(235,188,78);
+    background: -moz-linear-gradient(90deg, rgba(235,188,78,1) 5%, rgba(31,42,68,1) 20%, rgba(0,169,196,1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(235,188,78,1) 5%, rgba(31,42,68,1) 20%, rgba(0,169,196,1) 100%);
+    background: linear-gradient(90deg, rgba(235,188,78,1) 5%, rgba(31,42,68,1) 20%, rgba(0,169,196,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ebbc4e",endColorstr="#00a9c4",GradientType=1);
+}
+
+@mixin deg-corp-footer {
+    background: rgb(235,188,78);
+    background: -moz-linear-gradient(-90deg, rgba(235,188,78,1) 5%, rgba(31,42,68,1) 20%, rgba(0,169,196,1) 100%);
+    background: -webkit-linear-gradient(-90deg, rgba(235,188,78,1) 5%, rgba(31,42,68,1) 20%, rgba(0,169,196,1) 100%);
+    background: linear-gradient(-90deg, rgba(235,188,78,1) 5%, rgba(31,42,68,1) 20%, rgba(0,169,196,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ebbc4e",endColorstr="#00a9c4",GradientType=1);
+}
+
+@mixin img-white {
+    filter: brightness(0) invert(1);
+}
+
+// Vendors: normalize
+@import 'vendors/normalize/normalize/import-now';
+
+// Core
+@import 'core/core';
+
+// Dashboard
+@import 'dashboard/dashboard';
+@import 'dashboard/header';
+@import 'dashboard/nav';
+@import 'dashboard/main';
+@import 'dashboard/footer';
+
+
+// Components
+@import 'components/buttons';
+@import 'components/instructions';
+@import 'components/player';
+@import 'components/timer';

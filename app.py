@@ -17,6 +17,10 @@ http_server.config['TEMPLATES_AUTO_RELOAD'] = True
 websocket = SocketIO(http_server, cors_allowed_origins="*")
 
 # metodos del servidor http
+@http_server.route('/')
+def inicio():
+   return render_template('index.html')
+
 @http_server.route('/livestream')
 def livestreaming():
    return render_template('index.html')

@@ -1,0 +1,16 @@
+.instructions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: var(--space);
+    max-width: 700px;
+    font-size: .85rem;
+    padding: var(--space) 0;
+    color: var(--c-white);
+    //background-color: var(--c-white);
+
+    & > * {
+        flex: 1 1 auto;
+    }
+}

@@ -1,0 +1,27 @@
+nav {
+    background-color: var(--c-primary);
+    color: var(--c-white);
+    z-index: 999;
+    box-shadow: var(--shadow-nav);
+}
+
+.nav {
+
+    &_menu {
+        display: flex;
+        justify-content: flex-end;
+        gap: var(--space);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        &--item {
+
+            a {
+                color: var(--c-white);
+                text-decoration: none;
+            }
+
+        }
+    }
+}

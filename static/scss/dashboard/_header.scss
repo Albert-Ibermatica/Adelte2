@@ -1,0 +1,50 @@
+header {
+    //@include deg-corp-header;
+    //background-color: var(--c-primary);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    gap: var(--space);
+    z-index: 99;
+
+    & > * {
+        flex: 1 1 50%;
+    }
+
+    .header {
+
+        &_uno {}
+        
+        &_dos {
+             @media screen and (max-height: 700px) {
+                 display: none;
+             }
+        }
+    }
+
+    h1, .text {
+        //color: var(--c-white);
+        @media screen and (max-width: 1024px) {
+            text-align: center;
+        }
+    }
+
+    h1 {
+
+         @media screen and (max-height: 700px) {
+            font-size: 1.5rem;
+            margin: 0;
+            line-height: 1;
+         }
+    }
+
+    .text {}
+
+    @media screen and (max-width: 1024px) {
+        flex-flow: column nowrap;
+        align-items: center;
+    }
+}
