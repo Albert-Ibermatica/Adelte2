@@ -3,6 +3,7 @@ function stop_instances(){
     socket.connect()
     console.log("stop_instances clicked")
     socket.emit('stop_aws')
+    //closeConnection()
 }
 function start_instances(){
     socket.connect()

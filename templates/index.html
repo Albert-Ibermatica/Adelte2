@@ -66,7 +66,7 @@
                 </a>
             </div>
         </nav>
-
+        
         <main>
             <div class="autofinger_container">
 
@@ -77,21 +77,23 @@
                     <img id="imgdisplay" class="camera"
                         src="https://services.meteored.com/img/article/cuantos-azules-tiene-el-cielo-289011-2_1024.jpg"
                         alt="imagen" />
-
-                    <!-- <div id="framedisplay" class="camera" style="background-image: url('https://services.meteored.com/img/article/cuantos-azules-tiene-el-cielo-289011-2_1024.jpg');"></div>
-                    <div id="imgdisplay" class="camera"style="background-image: url('hhttps://services.meteored.com/img/article/cuantos-azules-tiene-el-cielo-289011-2_1024.jpg');"></div> -->
                 </div>
 
                 <div class="autofinger_container--buttons">
-                    <button id="startButton" type="button" onclick="openConnection()">Iniciar reconocimiento de
+                    <button style="visibility: hidden;"  id="startButton" type="button" onclick="openConnection()">Iniciar reconocimiento de
                         puertas</button>
-                    <button id="stopButton" type="button" onclick="closeConnection()">Detener reconocimiento de
+                    <button style="visibility: hidden;"  id="stopButton" type="button" onclick="closeConnection()">Detener reconocimiento de
                         puertas</button>
                 </div>
-
+         
             </div>
+   
         </main>
-
+        <div id="mi-modal" class="modal">
+            <div class="modal-contenido">
+              <div id="barra-carga" class="barra-carga"></div>
+            </div>
+          </div>
         <footer>
             <div class="footer_uno">
 

@@ -30,11 +30,6 @@ socket.on('aws_status_response', function (ret) {
 })
 
 function openConnection() {
-    window.alert('Iniciado procesamiento de imagen')
-    var stopButton = document.getElementById('stopButton')
-    stopButton.disabled = false;
-    var startButton = document.getElementById('startButton')
-    startButton.disabled = true;
     socket.connect()
     socket.emit('openConnection');
     socket.emit('returnFrames')
@@ -52,11 +47,6 @@ socket.on('liveResponse', ({ img, frame }) => {
 })
 function closeConnection() {
     window.alert('Deteniendo procesamiento de imagen')
-    var stopButton = document.getElementById('stopButton')
-    stopButton.disabled = true;
-    var startButton = document.getElementById('startButton')
-    startButton.disabled = false;
-
     socket.emit('closeConnection');
     socket.disconnect();
 }
