@@ -7,23 +7,18 @@ socket.on('aws_status_response', function (ret) {
     console.log(ret)
     // stopped
     if (ret == 'stopped') {
-
         console.log('stopped')
     }
     // stopping
-
     if (ret == 'stopping') {
-
         console.log('stopping')
     }
     // running
     if (ret == 'running') {
-
         console.log('running')
     }
     // pending
     if (ret == 'pending') {
-
         console.log('pending')
     }
 

@@ -56,7 +56,11 @@
                         <ion-icon name="image-outline"></ion-icon> Imágenes procesadas
                     </a></li>
             </ul>
-
+            <div id="spinnerPopup" style="display: none;">
+                <div id="spinner"></div>
+                <p id="loadingPercentage">0%</p>
+                <div id="loadingBar"></div>
+              </div>
             <div class="nav_buttons">
                 <a class="" role="button" onclick="start_instances()" type="button">
                     <ion-icon name="power-outline"></ion-icon> Iniciar servidores
@@ -87,13 +91,8 @@
                 </div>
          
             </div>
-   
+
         </main>
-        <div id="mi-modal" class="modal">
-            <div class="modal-contenido">
-              <div id="barra-carga" class="barra-carga"></div>
-            </div>
-          </div>
         <footer>
             <div class="footer_uno">
 

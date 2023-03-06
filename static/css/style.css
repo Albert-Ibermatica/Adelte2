@@ -676,3 +676,29 @@ button[selected],
   font-weight: bold;
   color: var(--c-white);
 }/*# sourceMappingURL=style.css.map */
+#spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #09f;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#loadingBar {
+  width: 100%;
+  height: 10px;
+  background-color: #ddd;
+  margin-top: 10px;
+}
+
+#loadingBarFill {
+  height: 100%;
+  background-color: #09f;
+}
