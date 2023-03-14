@@ -81,7 +81,7 @@ socket.on('liveResponse', ({ img, frame }) => {
     document.getElementById('framedisplay').src = 'data:image/jpeg;base64,' + base64frame
 
     isLoading = false; // Marcar como no cargando
-    document.getElementById('loading').style.display = 'none'; // Ocultar spinner
+    //document.getElementById('loading').style.display = 'none'; // Ocultar spinner
 
     socket.emit('openConnection')
 })
