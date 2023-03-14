@@ -42,7 +42,9 @@
                 </h2>
             </div>
         </header>
-
+        <style>
+     
+          </style>
 
         <nav>
             <ul class="nav_menu">
@@ -52,6 +54,9 @@
                 <li class="nav_menu--item"><a href="/img_processing">
                         <ion-icon name="image-outline"></ion-icon> Imágenes procesadas
                     </a></li>
+                    <li class="nav_menu--item"><a id="servidorActivo">
+                        Estado del servidor: Detenido
+                 </a></li>
             </ul>
 
             <div class="nav_buttons">
@@ -63,7 +68,6 @@
                 </a>
             </div>
         </nav>
-
         <main>
             <div class="autofinger_container--process">
                 <div class="img_table">
@@ -95,9 +99,6 @@
 
 
                 <div class="">
-                    <div id="spinner-div">
-                        <div class="spinner-border text-primary" role="status"></div>
-                    </div>
                     <img id="imgdisplay" class="camera"
                         src="https://img.freepik.com/premium-photo/beautiful-blue-sky-clouds-with-daylight-natural-background-vast-blue-sky-clouds-sky_387624-36.jpg?w=580"
                         alt="imagen" />

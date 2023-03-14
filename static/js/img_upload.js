@@ -37,9 +37,7 @@ function processSelectedImg(img){
                         }
 
                     });
-                       
-
-                  
+               
             };
             reader.readAsDataURL(blob);
         });

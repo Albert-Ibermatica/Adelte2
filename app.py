@@ -95,26 +95,29 @@ def handle_message(data):
 
 @websocket.on('openConnection')
 def open_connection():
-    print('transferencia iniciada')
+        try:
+            print('transferencia iniciada')
 
-    # captura y graba una imagen en el directorio:  unprocessed_imgs/captura_camara.jpeg 
-    # llama al metodo upload y guarda lo que devuelve a /processed_imgs
-    r = requests.get('http://192.168.100.71:6688/snapshot/PROFILE_000')
-    file = open("unprocessed_imgs/captura_camara.jpeg", "wb")
-    file.write(r.content)
-    file.close()
-    
-    base64_img= upload.upload('unprocessed_imgs/captura_camara.jpeg') 
-    # cogemos un fotograma para mandar a la web el de la izquierda 
-    
-    # serializamos a base64 el fotograma para mandarlo en el emit del websocket
-    frame_base64 = base64.b64encode(r.content)
+            # captura y graba una imagen en el directorio:  unprocessed_imgs/captura_camara.jpeg 
+            # llama al metodo upload y guarda lo que devuelve a /processed_imgs
+            r = requests.get('http://192.168.100.71:6688/snapshot/PROFILE_000')
+            file = open("unprocessed_imgs/captura_camara.jpeg", "wb")
+            file.write(r.content)
+            file.close()
+            
+            base64_img= upload.upload('unprocessed_imgs/captura_camara.jpeg') 
+            # cogemos un fotograma para mandar a la web el de la izquierda 
+            
+            # serializamos a base64 el fotograma para mandarlo en el emit del websocket
+            frame_base64 = base64.b64encode(r.content)
 
-    # capturamos la ultima imagen del directorio y la serializamos
-    #base64_img = return_and_serialize.capture_and_serialize()
-    
-    # emitimos las 2 imagenes
-    websocket.emit('liveResponse', {'img': base64_img, 'frame': frame_base64})
+            # capturamos la ultima imagen del directorio y la serializamos
+            #base64_img = return_and_serialize.capture_and_serialize()
+            
+            # emitimos las 2 imagenes
+            websocket.emit('liveResponse', {'img': base64_img, 'frame': frame_base64})
+        except Exception as e:
+            print(f'Error: {e}')
     
 
     

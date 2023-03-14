@@ -17,7 +17,6 @@
     
     <link rel="stylesheet" href="{{url_for('static',filename='css/style.min.css')}}">
 
-    
     <!-- App styles -->
     <link rel="stylesheet" href="{{url_for('static',filename='css-app/css-app.css')}}">
 
@@ -55,12 +54,11 @@
                 <li class="nav_menu--item"><a href="/img_processing">
                         <ion-icon name="image-outline"></ion-icon> Imágenes procesadas
                     </a></li>
+                <li class="nav_menu--item"><a id="servidorActivo">
+                       Estado del servidor: Detenido
+                </a></li>
+
             </ul>
-            <div id="spinnerPopup" style="display: none;">
-                <div id="spinner"></div>
-                <p id="loadingPercentage">0%</p>
-                <div id="loadingBar"></div>
-              </div>
             <div class="nav_buttons">
                 <a class="" role="button" onclick="start_instances()" type="button">
                     <ion-icon name="power-outline"></ion-icon> Iniciar servidores
@@ -76,17 +74,19 @@
 
                 <div class="autofinger_container--pictures">
                     <img id="framedisplay" class="camera"
+                        style="  width: 580px; height: 400px;"
                         src="https://services.meteored.com/img/article/cuantos-azules-tiene-el-cielo-289011-2_1024.jpg"
-                        alt="imagen" />
+                        alt="Cargando fotograma ..." />
                     <img id="imgdisplay" class="camera"
+                        style="  width: 580px; height: 400px;"
                         src="https://services.meteored.com/img/article/cuantos-azules-tiene-el-cielo-289011-2_1024.jpg"
-                        alt="imagen" />
+                        alt="Cargando imagen procesada ..." />
                 </div>
 
                 <div class="autofinger_container--buttons">
-                    <button style="visibility: hidden;"  id="startButton" type="button" onclick="openConnection()">Iniciar reconocimiento de
+                    <button id="startButton" type="button" onclick="openConnection()">Iniciar reconocimiento de
                         puertas</button>
-                    <button style="visibility: hidden;"  id="stopButton" type="button" onclick="closeConnection()">Detener reconocimiento de
+                    <button id="stopButton" type="button" onclick="closeConnection()">Detener reconocimiento de
                         puertas</button>
                 </div>
          
@@ -102,7 +102,6 @@
             </div>
         </footer>
     </div>
-
 </body>
 
 <!-- Main Js -->
