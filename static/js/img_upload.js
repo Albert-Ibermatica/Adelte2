@@ -13,14 +13,15 @@ function processSelectedImg(img){
                     const base64 = getBase64StringFromDataURL(reader.result);
                     console.log('metodo process selected img')
                     console.log(base64);
-               
+                    debugger
                     $('#imgdisplay').hide(); // escondemos el display 
                     $('#spinner-div').show();//cargamos el spinner
                     $.ajax({
                         type:"POST", 
-                        url: 'http://192.168.1.65:8080/process_real_img',
+                        url: 'http://localhost:8080/process_real_img',
                         data: {
-                             "img" : base64 
+
+                             "img" : base64
                               
                             } ,
                         success: function( img ){

@@ -37,6 +37,7 @@ def process_real_img():
     
     #json = request.get_json()
     img = request.form['img']
+    
     # base64 a imagen real.
     
     with open("unprocessed_real_imgs/realimg.jpeg", "wb") as fh:
