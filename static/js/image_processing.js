@@ -2,7 +2,7 @@ var TargetImg;
 addListeners();
 function addListeners() {
 
-    const imgs = document.querySelectorAll('.imgGrid');
+    const imgs = document.querySelectorAll('.img_table--item');
     imgs.forEach(img => {
 
         var imagen = img;
