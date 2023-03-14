@@ -13,7 +13,6 @@ function processSelectedImg(img){
                     const base64 = getBase64StringFromDataURL(reader.result);
                     console.log('metodo process selected img')
                     console.log(base64);
-                    debugger
                     $('#imgdisplay').hide(); // escondemos el display 
                     $('#spinner-div').show();//cargamos el spinner
                     $.ajax({
@@ -32,7 +31,7 @@ function processSelectedImg(img){
                             $('#imgdisplay').show();
                             document.getElementById('imgdisplay').src='data:image/jpeg;base64,'+img;
                         },
-                        timeout: 15000,
+                        timeout: 30000,
                         error: function(  errorThrown ){
                             console.log( errorThrown );
                         }
