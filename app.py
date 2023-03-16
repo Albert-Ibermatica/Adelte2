@@ -1,16 +1,11 @@
-from flask import Flask, render_template, request
-from flask_cors import CORS, cross_origin
-from flask_socketio import SocketIO, emit
+from flask import Flask, render_template
+from flask_socketio import SocketIO
 from engineio.payload import Payload
 import base64
 import stop_ec2_instances
 import run_ec2_instances
-import return_and_serialize
-import img_capture
-import upload_real_photo
 import requests
 import upload
-from io import BytesIO
 # configuracion del servidor
 http_server = Flask(__name__ , static_folder="static", template_folder="templates")
 Payload.max_decode_packets = 500
@@ -30,7 +25,7 @@ def livestreaming():
 @http_server.route('/img_processing')
 def imgprocessing():
    return render_template('img_processing.html')
-
+""" 
 @http_server.route('/process_real_img', methods=['POST'])
 def processRealImg():
         
@@ -53,7 +48,7 @@ def processRealImg():
         return serialized_processed_img
     
     except Exception as e:  
-        print(e)
+        print(e) """
 #metodos del websocket
 
 @websocket.on('connect')

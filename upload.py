@@ -1,11 +1,7 @@
-from queue import LifoQueue
-import multiprocessing
-from watchdog.observers import Observer
-from watchdog.events import PatternMatchingEventHandler
-import os, time, json, requests, io, base64, ntpath
+import  time, requests, ntpath
 from PIL import Image
 import numpy as np
-import cv2, sys
+import cv2
 # metodo upload para procesar la imagen:
 savePath = "processed_imgs"
 # la url hay que cambiarla por el servidor local aqui: LA URL DE MOMENTO CAMBIA CADA VEZ QUE SE ARRANCA LA INSTANCIA
