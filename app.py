@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from flask_cors import CORS, cross_origin
 from flask_socketio import SocketIO, emit
 from engineio.payload import Payload
 import base64
@@ -9,6 +10,7 @@ import img_capture
 import upload_real_photo
 import requests
 import upload
+from io import BytesIO
 # configuracion del servidor
 http_server = Flask(__name__ , static_folder="static", template_folder="templates")
 Payload.max_decode_packets = 500
@@ -30,26 +32,28 @@ def imgprocessing():
    return render_template('img_processing.html')
 
 @http_server.route('/process_real_img', methods=['POST'])
-# este metodo es un post que procesa una imagen real y la envia al servidor de AWS con el modelo de deep learning.
-def process_real_img():
-    print('metodo process real img.')
-    # cogemos los datos del form
-    
-    #json = request.get_json()
-    img = request.form['img']
-    
-    # base64 a imagen real.
-    
-    with open("unprocessed_real_imgs/realimg.jpeg", "wb") as fh:
-        fh.write(base64.b64decode(img))
+def processRealImg():
+        
+    try:
+        img_base64 = request.form['img']
 
-    serialized_real_img = upload_real_photo.upload("unprocessed_real_imgs/realimg.jpeg")
+        print(img_base64)
 
-    #serialized_real_img = return_and_serialize.capture_and_serialize_real()
+        img_bytes = base64.b64decode(img_base64)
+        
+        # Almacena temporalmente la imagen en formato de bytes utilizando BytesIO
+        img_io = BytesIO(img_bytes)
+        
+        # Llama a la función "upload()" para procesar la imagen en formato de bytes y obtener la imagen procesada como bytes
+        serialized_real_img = upload_real_photo.upload(img_io.getvalue())
+        
+        serialized_processed_img = base64.b64encode(serialized_real_img).decode('utf-8')
+        print(serialized_processed_img)
+        # Devuelve la imagen procesada como bytes
+        return serialized_processed_img
     
-    return serialized_real_img
-
-
+    except Exception as e:  
+        print(e)
 #metodos del websocket
 
 @websocket.on('connect')

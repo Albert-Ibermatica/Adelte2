@@ -11,7 +11,7 @@ from PIL import Image
 import numpy as np
 import cv2, sys
 import urllib.request
-
+import base64
 
 # metodo upload para procesar la imagen, en este directorio se guardan las de aviones reales.
 savePath = "processed_plane_imgs"
@@ -24,6 +24,7 @@ url = 'http://ec2-3-90-92-67.compute-1.amazonaws.com:5000/segmentation'
 
 def upload(image_file):
     try:
+
         start = time.time()
         basename = ntpath.basename(image_file).split(".")[0]
         
@@ -48,20 +49,21 @@ def upload(image_file):
         # Recive request answer:
         jsonResponse = r.json()
         imagenBase64=jsonResponse['imageBytes']
-        #imagenResul = base64.b64decode(jsonResponse['imageBytes'].encode('ascii'))
-        #print(imagenResul)
-        #image = Image.open(io.BytesIO(imagenResul))
-        #image.save('{}/{}_segmented.jpeg'.format(savePath, basename))
+        imagenResul = base64.b64decode(jsonResponse['imageBytes'].encode('ascii'))
+        print(imagenResul)
+        image = Image.open(io.BytesIO(imagenResul))
+        image.save('{}/{}_segmented.jpeg'.format(savePath, basename))
         
         saved = time.time()
 
         print("time for image {}: ".format(image_file), saved - start)
         print(imagenBase64)
+
         return imagenBase64
 
     except Exception as e:
-
+        print(e)
         return False
 
 
-upload("static/sample_images/sample2.jpg")
+upload("static/sample_images/sample9.jpg")

@@ -72,7 +72,7 @@ socket.on('liveResponse', ({ img, frame }) => {
     //if (!img || !frame) {
         //document.getElementById('loadingMsg').textContent = 'Cargando...'; // Mostrar mensaje de carga
         //return;
-    //}
+    //}4
 
     document.getElementById('imgdisplay').src = 'data:image/jpeg;base64,' + img
 

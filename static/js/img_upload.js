@@ -11,33 +11,9 @@ function processSelectedImg(img){
             const reader = new FileReader();
             reader.onloadend = () => {
                     const base64 = getBase64StringFromDataURL(reader.result);
-                    console.log('metodo process selected img')
-                    console.log(base64);
-                    $('#imgdisplay').hide(); // escondemos el display 
-                    $('#spinner-div').show();//cargamos el spinner
-                    $.ajax({
-                        type:"POST", 
-                        url: 'http://localhost:8080/process_real_img',
-                        data: {
-
-                             "img" : base64
-                              
-                            } ,
-                        success: function( img ){
-
-                            console.log('------------- response -----------------')
-                            
-                           $('#spinner-div').hide();//quitamos el spipnnero porque ha finalizado la ejecucion
-                            $('#imgdisplay').show();
-                            document.getElementById('imgdisplay').src='data:image/jpeg;base64,'+img;
-                        },
-                        timeout: 30000,
-                        error: function(  errorThrown ){
-                            console.log( errorThrown );
-                        }
-
-                    });
-               
+                    
+            
+                   // document.getElementById('imgdisplay').src='data:image/jpeg;base64,'+base64;
             };
             reader.readAsDataURL(blob);
         });
