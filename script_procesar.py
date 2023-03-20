@@ -64,6 +64,3 @@ def upload(image_file):
     except Exception as e:
         print(e)
         return False
-
-
-upload("static/sample_images/sample9.jpg")

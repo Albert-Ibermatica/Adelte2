@@ -63,5 +63,3 @@ def upload(image_file):
 
         return False
 
-
-upload("static/sample_images/sample2.jpg")
