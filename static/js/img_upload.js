@@ -1,4 +1,4 @@
-/* const getBase64StringFromDataURL = (dataURL) =>
+const getBase64StringFromDataURL = (dataURL) =>
     dataURL.replace('data:', '').replace(/^.+,/, '');
 
 function processSelectedImg(img){
@@ -18,4 +18,3 @@ function processSelectedImg(img){
             reader.readAsDataURL(blob);
         });
 }
- */

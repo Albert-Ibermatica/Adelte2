@@ -1,3 +1,7 @@
+from time import time
+import cv2
+import os, glob, time
+import xml.etree.ElementTree as ET
 from queue import LifoQueue
 import multiprocessing
 from watchdog.observers import Observer
@@ -6,18 +10,21 @@ import os, time, json, requests, io, base64, ntpath
 from PIL import Image
 import numpy as np
 import cv2, sys
-# metodo upload para procesar la imagen:
-savePath = "processed_imgs"
+import urllib.request
+import base64
+
+# metodo upload para procesar la imagen, en este directorio se guardan las de aviones reales.
+savePath = "processed_plane_imgs"
+# la url hay que cambiarla por el modelo que procesa las imagenes de avion reales.
 # la url hay que cambiarla por el servidor local aqui: LA URL DE MOMENTO CAMBIA CADA VEZ QUE SE ARRANCA LA INSTANCIA
 # Y HAY DOS DISTINTAS UNA PARA AVIONES REALES Y OTRA PARA AVIONES LEGO. !!!!!!!!!
-# ec2-3-95-157-129.compute-1.amazonaws.com
 
-# esta url tiene que ser para los aviones de lego:::
-url = 'http://ec2-35-168-65-141.compute-1.amazonaws.com:5000/segmentation'
-
+# esto url es para los aviones reales.
+url = 'http://ec2-3-90-92-67.compute-1.amazonaws.com:5000/segmentation'
 
 def upload(image_file):
     try:
+
         start = time.time()
         basename = ntpath.basename(image_file).split(".")[0]
         
@@ -40,18 +47,23 @@ def upload(image_file):
         r = requests.post(url, files=my_img, data=data)
         req_made = time.time()
         # Recive request answer:
-        imagenBase64 = r.json()['imageBytes']
-        #imagenBase64 = base64.b64encode (jsonResponse['imageBytes'].encode('ascii'))
-        #imagenResul = base64.b64decode(jsonResponse['imageBytes'].encode('ascii'))
-        #image = Image.open(io.BytesIO(imagenResul))
-        #image.save('{}/{}_segmented.jpeg'.format(savePath, basename))
-
+        jsonResponse = r.json()
+        imagenBase64=jsonResponse['imageBytes']
+        imagenResul = base64.b64decode(jsonResponse['imageBytes'].encode('ascii'))
+        print(imagenResul)
+        image = Image.open(io.BytesIO(imagenResul))
+        image.save('{}/{}_segmented.jpeg'.format(savePath, basename))
+        
         saved = time.time()
 
         print("time for image {}: ".format(image_file), saved - start)
+        print(imagenBase64)
 
         return imagenBase64
 
     except Exception as e:
-
+        print(e)
         return False
+
+
+upload("static/sample_images/sample9.jpg")

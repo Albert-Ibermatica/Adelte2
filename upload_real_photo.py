@@ -1,11 +1,16 @@
 from time import time
 import cv2
-import time
-import  time, requests, ntpath
+import os, glob, time
+import xml.etree.ElementTree as ET
+from queue import LifoQueue
+import multiprocessing
+from watchdog.observers import Observer
+from watchdog.events import PatternMatchingEventHandler
+import os, time, json, requests, io, base64, ntpath
 from PIL import Image
 import numpy as np
-import cv2
-
+import cv2, sys
+import urllib.request
 
 
 # metodo upload para procesar la imagen, en este directorio se guardan las de aviones reales.
@@ -57,3 +62,6 @@ def upload(image_file):
     except Exception as e:
 
         return False
+
+
+upload("static/sample_images/sample2.jpg")

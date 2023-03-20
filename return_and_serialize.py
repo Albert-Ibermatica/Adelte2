@@ -1,6 +1,8 @@
 import os
 import glob
 import base64
+import io
+from PIL import Image
 
 
 def capture_and_serialize():

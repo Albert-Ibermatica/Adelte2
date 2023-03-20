@@ -1,5 +1,5 @@
-/* var TargetImg;
-//addListeners();
+var TargetImg;
+addListeners();
 function addListeners() {
 
     const imgs = document.querySelectorAll('.imgGrid');
@@ -96,4 +96,4 @@ function deleteImg() {
 
     TargetImg.src = null;
 
-} */
+}

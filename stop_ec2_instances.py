@@ -1,6 +1,7 @@
+import sys
 import boto3
 from botocore.exceptions import ClientError
-
+from flask_socketio import SocketIO, emit
 
 
 def stop_instances():
